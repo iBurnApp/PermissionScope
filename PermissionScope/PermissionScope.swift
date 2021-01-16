@@ -746,6 +746,10 @@ typealias resultsForConfigClosure     = ([PermissionResult]) -> Void
             return .unauthorized
         case .notDetermined:
             return .unknown
+        case .limited:
+            return .authorized
+        @unknown default:
+            return .unknown
         }
     }
     
