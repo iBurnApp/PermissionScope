@@ -322,7 +322,7 @@ typealias resultsForConfigClosure     = ([PermissionResult]) -> Void
     - returns: UIButton instance with a custom style.
     */
     func permissionStyledButton(_ type: PermissionType) -> UIButton {
-        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 220, height: 40))
+        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 250, height: 40))
         button.setTitleColor(permissionButtonTextColor, for: .normal)
         button.titleLabel?.font = buttonFont
 
@@ -333,9 +333,9 @@ typealias resultsForConfigClosure     = ([PermissionResult]) -> Void
         // this is a bit of a mess, eh?
         switch type {
         case .locationAlways, .locationInUse:
-            button.setTitle("Enable \(type.prettyDescription)".localized.uppercased(), for: .normal)
+            button.setTitle("Continue with \(type.prettyDescription)".localized.uppercased(), for: .normal)
         default:
-            button.setTitle("Allow \(type)".localized.uppercased(), for: .normal)
+            button.setTitle("Continue with \(type)".localized.uppercased(), for: .normal)
         }
         
         button.addTarget(self, action: Selector("request\(type)"), for: .touchUpInside)
