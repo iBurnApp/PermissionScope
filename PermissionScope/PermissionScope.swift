@@ -788,6 +788,12 @@ typealias resultsForConfigClosure     = ([PermissionResult]) -> Void
             return .unauthorized
         case .notDetermined:
             return .unknown
+        case .fullAccess:
+            return .authorized
+        case .writeOnly:
+            return .authorized
+        @unknown default:
+            return .unknown
         }
     }
     
@@ -825,6 +831,12 @@ typealias resultsForConfigClosure     = ([PermissionResult]) -> Void
             return .unauthorized
         case .notDetermined:
             return .unknown
+        case .fullAccess:
+            return .authorized
+        case .writeOnly:
+            return .authorized
+        @unknown default:
+            return .unauthorized
         }
     }
     
