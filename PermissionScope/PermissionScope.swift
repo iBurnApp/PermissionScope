@@ -500,6 +500,10 @@ typealias resultsForConfigClosure     = ([PermissionResult]) -> Void
                 return .unauthorized
             case .notDetermined:
                 return .unknown
+            case .limited:
+                return .limited
+            @unknown default:
+                return .unknown
             }
         } else {
             // Fallback on earlier versions
@@ -648,7 +652,7 @@ typealias resultsForConfigClosure     = ([PermissionResult]) -> Void
             showDeniedAlert(.notifications)
         case .disabled:
             showDisabledAlert(.notifications)
-        case .authorized:
+        case .authorized, .limited:
             detectAndCallback()
         }
     }
@@ -686,7 +690,7 @@ typealias resultsForConfigClosure     = ([PermissionResult]) -> Void
             showDeniedAlert(.microphone)
         case .disabled:
             showDisabledAlert(.microphone)
-        case .authorized:
+        case .authorized, .limited:
             break
         }
     }
@@ -725,7 +729,7 @@ typealias resultsForConfigClosure     = ([PermissionResult]) -> Void
             showDeniedAlert(.camera)
         case .disabled:
             showDisabledAlert(.camera)
-        case .authorized:
+        case .authorized, .limited:
             break
         }
     }
@@ -767,7 +771,7 @@ typealias resultsForConfigClosure     = ([PermissionResult]) -> Void
             self.showDeniedAlert(.photos)
         case .disabled:
             showDisabledAlert(.photos)
-        case .authorized:
+        case .authorized, .limited:
             break
         }
     }
